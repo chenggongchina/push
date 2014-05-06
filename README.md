@@ -1,39 +1,66 @@
-push体系介绍
-=============================
-push体系是一个简单的状态汇报及监控库。客户端可以向服务端汇报数据，或从服务端接收其他客户端汇报的数据。
+PUSH framework==================PUSH is simple status report framework, you can use it to report data from client to server, or recieve data from other clients.
 
-实现原理:
------------------------------
-客户端->服务端使用的是不可靠连接，也就是说，PUSH体系不保障所有的汇报内容均会被服务端成功接收到。
-服务端->客户端使用的是可靠连接，但是由于数据众多或客户端连入数量众多，为了保障服务端缓存数据不堆积，服务端也会有选择的丢弃数据，也就是说，PUSH体系不保障所有的服务端数据均会传输到接收端。
-功能：
+PUSH do not promise data will be reached successfully.
+> client->server is comunicate in udp. so, PUSH do not promise that all the report message will be reached successfully.> server->client is comunicate in tcp. but, to adapter jam network, server may drop some message if necessary. so, PUSH do not promise all the data with be reached successfully.
 
-push发送：将数据发送到服务端
-push接收：侦听服务端指定通道的数据
-push驱动：push驱动详细介绍
+Features---------------
+* push sending: send data to server* push recieving: recving data from appointed channel
+* push driving: see details below
+# Push driving
+When we design a trigger system aritecher, we may design it as a Polling Mode system so it may be easy to implement.
 
-适用场景：
-------------------------------
-分散的组件服务向同一的中心汇报工作状态
-轮询机制的服务变为驱动形式的服务
+But if we want to improve the respone performance, the Polling Mode is not fit. In some scene, we may use COMET, in a word: REQUEST, HANG UP, RESPONE: it brings server lots of pressure.
+
+The PUSH is design to get easy to change Polling Mode to Driving Mode.
+We can see a normal Polling Mode code as below:
+<pre><code>
+while true{
+	sleep
+	work
+}
+</pre></code>
+
+In PUSH you can write like this
+
+<pre><code>
+pushclient.joinchannel
+while true{
+	pushclient.wait
+	work
+}
+</pre></code>
+
+pushclient.wait implements as waiting for a singal, it will be release as push client recieve a message from server.
+And the trigger source system write a simple code : pushclient.send(channel,message) to multicast a message to the client who listened to the channel.
 
 
-push server
-==============================
-push server是一个永久的控制台服务程序，启动后除非手动杀死，永不关闭。其接收客户端连入及各种数据请求，并记录日志。
+What the scene do we use PUSH?
+---------------
+* distributed component report data to single center
+* to change the Polling Mode to Driving Mode with one line code
 
-usage:		PushServer.exe 		  or		PushServer.exe [port] [logpath]		[port] default = 27000		[logpath] default = .
+Push Server
+===============
+Push server is console server. It recieves data from clients , dispatches data to listener ,and logs.
+<pre><code>
+usage:		PushServer.exe
+		or
+		PushServer.exe [port] [logpath]
+		[port] default = 27000
+		[logpath] default = .</pre></code>
+Push Clent
+===============There is no exceptions in Push Client, so the push client lib will not inflect the main logic of client program.
 
-push client 特性
-==============================
-push client库不会抛出异常，原则上不会影响到主程序
-使用push接收功能，push client库将单独起一个线程进行接收，并且处理断线重连
-push client库消耗量很小，不会影响程序整体性能
+Push client will start a new thread for recieving, and will reconnect if there is any network issue, it cost little resource, and will not affect client program performance.
 
-
-		各语言当前实现功能
-		语言	push发送	push接收	push驱动
-		c++		√			X			X
-		c#		√			√			√
-		python	√			√			√
-		java	√			√			X
+Support Programming Languages
+---------------
+		Language	Push Sending		Push Recieving		Push Driving
+		C++			O					X					X
+		C#			O					O					O
+		python		O					O					O
+		java		O					O					X
+		
+Push Agent
+===============
+You can process the messages easily by Push Agent, as sending a email , writing a log or event send a phone message...

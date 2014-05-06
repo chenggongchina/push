@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushServer", "PushServer\PushServer.csproj", "{5EC0A33F-6B49-497E-8EC6-48C625167D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushServerTestUdp", "PushServerTest\PushServerTestUdp.csproj", "{5E80862A-6C11-4406-AC04-153ABFCEFBA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushServerTestTcp", "PushServerTestTcp\PushServerTestTcp.csproj", "{89746787-F656-4721-AEEE-CD28BAE78EED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EC0A33F-6B49-497E-8EC6-48C625167D58}.Debug|x86.ActiveCfg = Debug|x86
+		{5EC0A33F-6B49-497E-8EC6-48C625167D58}.Debug|x86.Build.0 = Debug|x86
+		{5EC0A33F-6B49-497E-8EC6-48C625167D58}.Release|x86.ActiveCfg = Release|x86
+		{5EC0A33F-6B49-497E-8EC6-48C625167D58}.Release|x86.Build.0 = Release|x86
+		{5E80862A-6C11-4406-AC04-153ABFCEFBA7}.Debug|x86.ActiveCfg = Debug|x86
+		{5E80862A-6C11-4406-AC04-153ABFCEFBA7}.Debug|x86.Build.0 = Debug|x86
+		{5E80862A-6C11-4406-AC04-153ABFCEFBA7}.Release|x86.ActiveCfg = Release|x86
+		{5E80862A-6C11-4406-AC04-153ABFCEFBA7}.Release|x86.Build.0 = Release|x86
+		{89746787-F656-4721-AEEE-CD28BAE78EED}.Debug|x86.ActiveCfg = Debug|x86
+		{89746787-F656-4721-AEEE-CD28BAE78EED}.Debug|x86.Build.0 = Debug|x86
+		{89746787-F656-4721-AEEE-CD28BAE78EED}.Release|x86.ActiveCfg = Release|x86
+		{89746787-F656-4721-AEEE-CD28BAE78EED}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

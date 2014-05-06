@@ -6,7 +6,9 @@ server->client is comunicate in tcp. but, to adapter jam network, server may dro
 Features---------------
 * push sending: send data to server* push recieving: recving data from appointed channel
 * push driving: see details below
-# Push driving
+
+### Push driving
+
 When we design a trigger system aritecher, we may design it as a Polling Mode system so it may be easy to implement.
 
 But if we want to improve the respone performance, the Polling Mode is not fit. In some scene, we may use COMET, in a word: REQUEST, HANG UP, RESPONE: it brings server lots of pressure.
@@ -40,7 +42,7 @@ And the trigger source system write a simple code : pushclient.send(channel,mess
 * to change the Polling Mode to Driving Mode with one line code
 
 Push Server
-===============
+---------------
 Push server is console server. It recieves data from clients , dispatches data to listener ,and logs.
 <pre><code>
 usage:		PushServer.exe
@@ -49,12 +51,11 @@ usage:		PushServer.exe
 		[port] default = 27000
 		[logpath] default = .</pre></code>
 Push Clent
-===============There is no exceptions in Push Client, so the push client lib will not inflect the main logic of client program.
+---------------There is no exceptions in Push Client, so the push client lib will not inflect the main logic of client program.
 
 Push client will start a new thread for recieving, and will reconnect if there is any network issue, it cost little resource, and will not affect client program performance.
 
-Support Programming Languages
----------------
+### Support Programming Languages
 		Language	Push Sending		Push Recieving		Push Driving
 		C++			O					X					X
 		C#			O					O					O
@@ -62,5 +63,5 @@ Support Programming Languages
 		java		O					O					X
 		
 Push Agent
-===============
+---------------
 You can process the messages easily by Push Agent, as sending a email , writing a log or event send a phone message...

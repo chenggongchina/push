@@ -52,7 +52,7 @@ usage:		PushServer.exe
 		[port] default = 27000
 		[logpath] default = .</pre></code>
 Push Clent
----------------There is no exceptions in Push Client, so the push client lib will not inflect the main logic of client program.
+---------------There is no exception throw from Push Client, so the push client lib will not inflect the main logic of client program.
 
 Push client will start a new thread for recieving, and will reconnect if there is any network issue, it cost little resource, and will not affect client program performance.
 

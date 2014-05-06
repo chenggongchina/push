@@ -1,8 +1,7 @@
 PUSH framework==================PUSH is simple status report framework, you can use it to report data from client to server, or recieve data from other clients.
 
-PUSH do not promise data will be reached successfully.		
-		client->server is comunicate in udp. so, PUSH do not promise that all the report message will be reached successfully.
-		server->client is comunicate in tcp. but, to adapter jam network, server may drop some message if necessary. so, PUSH do not promise all the data with be reached successfully.
+PUSH do not promise data will be reached successfully.		>client->server is comunicate in udp. so, PUSH do not promise that all the report message will be reached successfully.
+server->client is comunicate in tcp. but, to adapter jam network, server may drop some message if necessary. so, PUSH do not promise all the data with be reached successfully.
 
 Features---------------
 * push sending: send data to server* push recieving: recving data from appointed channel
